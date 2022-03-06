@@ -1,8 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 // utils
-
-const { sequelize } = require('../utils/dataBase');
+const { sequelize } = require('../util/database');
 
 const Todo = sequelize.define('todo', {
   id: {

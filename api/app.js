@@ -1,24 +1,27 @@
 const express = require('express');
 
 // Models
+const { Todo } = require('./models/todo.model');
 
 // Routers
+const { todoRouter } = require('./routes/todo.routes');
 
 // Utils
-const { sequelize } = require('./utils/database');
+const { sequelize } = require('./util/database');
 
+// Init express app
 const app = express();
 
-app.use(express.urlencoded());
+// Enable JSON incoming data
 app.use(express.json());
+
+// EndPoints
+app.use('/api/v1/todos/', todoRouter);
 
 sequelize
   .authenticate()
   .then(() => console.log('Database authenticated'))
   .catch((err) => console.log(err));
-
-/* EndPoints */
-/* app.use('/api/v1/todos/', todoRouter); */
 
 sequelize
   .sync({ force: true })
