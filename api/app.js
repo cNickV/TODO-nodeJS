@@ -1,8 +1,5 @@
 const express = require('express');
 
-// Models
-const { Todo } = require('./models/todo.model');
-
 // Routers
 const { todoRouter } = require('./routes/todo.routes');
 

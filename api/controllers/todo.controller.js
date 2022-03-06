@@ -1,15 +1,6 @@
 // Models
 const { Todo } = require('../models/todo.model');
 
-// Utils
-const { filterTodo } = require('../util/filterTodo');
-
-const todos = [
-  { id: 1, content: 'learn nodeJS' },
-  { id: 2, content: 'learn React' },
-  { id: 3, content: 'learn MySQL' }
-];
-
 exports.getAllTodos = async (req, res) => {
   try {
     const todoDb = await Todo.findAll({
@@ -28,7 +19,14 @@ exports.getAllTodos = async (req, res) => {
 
 exports.addTodo = async (req, res) => {
   try {
-    const {} = req.body;
+    const { content } = req.body;
+
+    const newContent = await Todo.create({ conten: content });
+
+    res.status(201).json({
+      status: 'success',
+      data: { newContent }
+    });
   } catch (err) {
     console.error(err);
   }
