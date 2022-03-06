@@ -17,3 +17,17 @@
 
 // Install cors library (npm i cors)
 // app.use(cors())
+
+const express = require('express');
+
+const app = express();
+
+app.use(express.urlencoded());
+app.use(express.json());
+
+/* EndPoints */
+/* app.use('/api/v1/todos/'); */
+
+app.listen(4002, () => {
+  console.log('TODO api Running');
+});
