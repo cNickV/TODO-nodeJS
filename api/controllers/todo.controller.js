@@ -21,7 +21,7 @@ exports.addTodo = async (req, res) => {
   try {
     const { content } = req.body;
 
-    const newContent = await Todo.create({ conten: content });
+    const newContent = await Todo.create({ content: content });
 
     res.status(201).json({
       status: 'success',
@@ -62,7 +62,7 @@ exports.editTodo = async (req, res) => {
 
 exports.deleteTodo = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const todo = await todo.findOne({
       where: {
         id: id
